@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>European Documentation | Only Archive</title>
+  <link rel="stylesheet" href="directory/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+  <script type="text/javascript" src="directory/functions.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">📑</div>
+        <div>
+          <h1>European Documentation</h1>
+          <p class="lead">Online archive for tasks between FY15 and FY21</p>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="themeToggle" class="theme-toggle">🌙</button>
+      </div>
+    </header>
+
+    <div class="panel">
+      <div class="toolbar">
+        <input type="text" class="search" placeholder="Search...">
+        <select id="countryFilter" class="select"></select>
+        <select id="ownerFilter" class="select"></select>
+        <select id="completedFilter" class="select">
+          <option value="">Completed Date ▼▲</option>
+          <option value="asc">A-Z ▼</option>
+          <option value="desc">Z-A ▲</option>
+        </select>
+        <div id="itemCounter" class="chip">0 items</div>
+      </div>
+
+      <div class="list-area">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Country</th>
+              <th>IPO#</th>
+              <th>SO#</th>
+              <th>Customer Account</th>
+              <th>Customer PO#</th>
+              <th>Shipment Date</th>
+              <th>Completed Date</th>
+              <th>Owner</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+        <div class="table-info"><span>Due to fetching capacities, only the first 50 rows from the data table are listed</span></div>
+      </div>
+    </div>
+
+    <footer>
+      European Documentation - Online Archive | Current: FY15-FY21 | Created & Maintained: Attila Ihasz
+    </footer>
+  </div>
+
+  <!-- Overlay Form -->
+  <div id="overlay" class="overlay hidden">
+    <div class="form-panel">
+      <div class="form-header">Documentation Task Form</div>
+      <button id="overlay-close" class="close-btn">&times;</button>
+      <div class="form-content">
+        <div class="left-section"></div>
+        <div class="right-section"></div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

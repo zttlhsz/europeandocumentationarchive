@@ -1,0 +1,484 @@
+/* ===============================
+   Root Variables
+=============================== */
+:root {
+    --bg: #121a27;
+    --lbg: #f5f8f9;
+    --card: #0b1220;
+    --muted: #94a3b8;
+    --accent: #0ea5a3;
+    --accent-2: #7c3aed;
+    --danger: #ef4444;
+    --surface: #071022;
+    --surface-light: #ffffff;
+    --panel: #ffffff;
+    --panel-dark: #111c2f;
+    --glass: rgba(255, 255, 255, 0.03);
+    --radius: 12px;
+    --gap: 12px;
+    --fw-semi: 600;
+    --fw-medium: 500;
+    --max-width: 80%;
+}
+
+/* ===============================
+   Base Styles
+=============================== */
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    color: #e6eef6;
+    background-color: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+}
+
+::selection {
+    background-color: var(--accent);
+    color: white;
+}
+
+.wrap {
+    max-width: var(--max-width);
+    margin: 15px auto;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===============================
+   Header
+=============================== */
+header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 18px;
+}
+
+.brand {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+}
+
+h1 {
+    font-size: 18px;
+    margin: 0;
+}
+
+p.lead {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.chip {
+    color: var(--lbg);
+    font-size: 0.75rem;
+    background-color: var(--accent-2);
+    padding: 7px;
+    margin-left: 10px;
+    border-radius: 15px;
+}
+
+/* ===============================
+   Controls & Buttons
+=============================== */
+.controls {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn {
+    background: var(--accent);
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.btn.ghost {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    color: var(--muted);
+}
+
+.btn.warn {
+    background: var(--danger);
+}
+
+/* Theme toggle button */
+.theme-toggle {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    padding: 10px 11px 12px 11px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s, transform 0.2s;
+}
+.theme-toggle:hover {
+    transform: scale(1.1);
+    background: var(--accent-2);
+}
+
+/* ===============================
+   Panel & Table
+=============================== */
+.panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--panel-dark);
+    padding: 15px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(5, 5, 25, 0.15);
+    overflow-y: auto;
+    max-height: calc(100vh - 100px);
+}
+
+.panel::-webkit-scrollbar,
+.list-area::-webkit-scrollbar,
+.form-panel::-webkit-scrollbar {
+    width: 8px;
+}
+.panel::-webkit-scrollbar-track,
+.list-area::-webkit-scrollbar-track,
+.form-panel::-webkit-scrollbar-track {
+    background: transparent;
+}
+.panel::-webkit-scrollbar-thumb,
+.list-area::-webkit-scrollbar-thumb,
+.form-panel::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 4px;
+}
+.panel::-webkit-scrollbar-thumb:hover,
+.list-area::-webkit-scrollbar-thumb:hover,
+.form-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
+}
+
+.toolbar {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.search,
+.select,
+select {
+    padding: 8px 10px;
+    border-radius: 10px;
+    background-color: var(--panel-dark);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e6eef6;
+    font-size: 8pt;
+}
+.select option,
+select option {
+    background-color: var(--panel-dark);
+    color: #e6eef6;
+}
+
+.list-area {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 300px;
+    max-height: calc(100vh - 220px);
+    padding-right: 6px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    table-layout: fixed; /* enable fixed column widths */
+}
+thead th {
+    position: sticky;
+    top: 0;
+    background-color: var(--panel-dark);
+    padding: 10px 8px;
+    text-align: left;
+    color: #e6eef6;
+    font-weight: 600;
+    font-size: 14px;
+}
+tbody tr {
+    cursor: pointer;
+}
+tbody td {
+    padding: 10px 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    vertical-align: middle;
+    background: transparent;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ===============================
+   Table Column Widths
+=============================== */
+.table th:nth-child(1), .table td:nth-child(1) { width: 55px; }  /* IPO# */
+.table th:nth-child(2), .table td:nth-child(2) { width: 85px; }  /* SO# */
+.table th:nth-child(3), .table td:nth-child(3) { width: 65px; } /* Sub-PO# */
+.table th:nth-child(4), .table td:nth-child(4) { width: 250px; } /* Customer Name */
+.table th:nth-child(5), .table td:nth-child(5) { width: 200px; } /* Customer PO# */
+.table th:nth-child(6), .table td:nth-child(6) { width: 85px; } /* Shipment Date */
+.table th:nth-child(7), .table td:nth-child(7) { width: 90px; } /* Completed Date */
+.table th:nth-child(8), .table td:nth-child(8) { width: 100px; } /* Owner */
+tr.selected {
+    background: rgba(14, 165, 163, 0.2);
+}
+
+/* ===============================
+   Footer
+=============================== */
+footer {
+    margin-top: 18px;
+    color: var(--muted);
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+/* ===============================
+   Overlay & Form
+=============================== */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    overflow-y: auto;
+    transition: opacity 0.3s;
+}
+.overlay.hidden { display: none; }
+
+.form-panel {
+    background-color: var(--panel-dark);
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 1366px;
+    width: 100%;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: overlay;
+    scrollbar-width: none; /* hide scrollbar */
+    font-size: 0.85rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.form-header {
+    font-weight: 800;
+    font-size: 1.15rem;
+    padding-bottom: 25px;
+}
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: var(--accent);
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-content {
+    display: flex;
+    gap: 100px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+.left-section {
+    flex: 7;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+.right-section {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-field label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+.form-field .value {
+    font-size: 0.75rem;
+    font-weight: normal;
+    color: var(--muted);
+    padding-bottom: 10px;
+}
+
+.table-info {
+    font-size: 0.65rem;
+    color: white;
+    text-align: center;
+    padding: 30px;
+
+}
+.table-info span {
+    background-color: var(--accent);
+    border-radius: 15px;
+    padding: 7px;
+}
+
+/* ===============================
+   Collapsible Fields
+=============================== */
+.collapsible {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 5px;
+}
+
+.collapsible .field-header {
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.collapsible .field-header::after {
+    content: "▶";
+    font-size: 14px;
+    margin-left: 8px;
+    transition: transform 0.2s;
+}
+
+.collapsible.open .field-header::after {
+    content: "▼";
+}
+
+.collapsible .hint {
+    font-size: 0.75rem;
+    font-weight: normal;
+    color: var(--muted);
+    padding-bottom: 10px;
+    display: block;
+}
+
+.collapsible .field-content {
+    display: none;
+    font-size: 0.75rem;
+    font-weight: normal;
+    color: var(--muted);
+    padding-bottom: 10px;
+}
+
+.collapsible.open .field-content {
+    display: block;
+}
+
+.collapsible.open .hint {
+    display: none;
+}
+
+/* ===============================
+   Light Theme Overrides
+=============================== */
+body.light-theme {
+    background-color: var(--lbg);
+    color: #1e1e1e;
+}
+body.light-theme .panel,
+body.light-theme thead th,
+body.light-theme .search,
+body.light-theme .select {
+    background-color: #ffffff;
+    color: #1e1e1e;
+}
+body.light-theme tbody td {
+    border-top-color: var(--lbg);
+}
+body.light-theme .select,
+body.light-theme .search {
+    border-color: #ccc;
+}
+body.light-theme .select option,
+body.light-theme select option {
+    background-color: #ffffff;
+    color: #1e1e1e;
+}
+body.light-theme .form-panel {
+    background-color: var(--panel);
+    color: #1e1e1e;
+}
+body.light-theme .close-btn {
+    background-color: var(--accent);
+    color: #fff;
+}
+body.light-theme .form-field .value {
+    color: #1e1e1e;
+}
+body.light-theme .collapsible .field-header {
+    background: none;
+    color: #1e1e1e;
+}
+body.light-theme .collapsible .field-content,
+body.light-theme .collapsible .hint {
+    color: #1e1e1e;
+}
+
+/* ===============================
+   Responsive
+=============================== */
+@media(max-width:900px) {
+    .list-area {
+        order: 1;
+    }
+}
