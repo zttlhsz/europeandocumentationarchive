@@ -3,7 +3,7 @@ let headerNames = [];
 
 // Load Excel
 async function loadExcel() {
-    const res = await fetch('source/data.xlsx');
+    const res = await fetch('data.xlsx');
     const data = await res.arrayBuffer();
     const workbook = XLSX.read(data, { type: 'array' });
     const sheet = workbook.Sheets['EU Doc Archive'];
@@ -192,4 +192,5 @@ window.onload = async () => {
         document.body.classList.toggle('light-theme');
         themeToggle.textContent = document.body.classList.contains('light-theme') ? '🌙' : '☀️';
     });
+
 };
